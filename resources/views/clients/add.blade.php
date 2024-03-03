@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="px-4 py-5 my-5 text-center bg-body-tertiary rounded-3">
-        <img class="img-fluid" src="{{ asset('images/UWI-Wordmark.webp') }}" alt="UWI Wordmark" width="300"/>
+    <div class="px-4 py-5 my-5 bg-body-tertiary rounded-3">
+{{--        <img class="img-fluid" src="{{ asset('images/UWI-Wordmark.webp') }}" alt="UWI Wordmark" width="300"/>--}}
         <h1 class="display-5 fw-bold text-body-emphasis">Create Client</h1>
         @if($errors->any())
             <div class="alert alert-danger">
@@ -14,7 +14,7 @@
             </div>
         @endif
         <div class="col-lg-6 mx-auto">
-            <form action="{{ route('clients') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('/clients') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -38,6 +38,7 @@
                 <div class="mb-3">
                     <label for="logo" class="form-label">Company Logo</label>
                     <input type="file" class="form-control" id="logo" name="logo" required>
+                    <small>Only image files (e.g. jpg, png) are allowed, and files must be less than 2MB.</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>

@@ -16,7 +16,7 @@ class ClientRequest extends FormRequest
             'address' => 'required',
             'logo' => [
                 'required',
-                File::types(['png', 'jpg', 'webp'])->min(1024)->max(12 * 1024)
+                File::types(['png', 'jpg', 'webp', 'svg'])->max(12 * 1024)
             ]
         ];
     }
