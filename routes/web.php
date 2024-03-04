@@ -25,7 +25,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // Create additional Routes below
 Route::get('/register', [RegisterController::class, 'create']);
