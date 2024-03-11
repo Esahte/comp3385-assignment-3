@@ -16,30 +16,10 @@ class ClientController extends Controller
     {
         $request->validated();
 
-        $logo = $request->file('logo');
-        $logo->storeAs('images', $logo->getClientOriginalName(), 'public');
+        $logoName = $request->file('logo')->storeAs('images', $request->file('logo')->getClientOriginalName(),
+            'public');
 
-//        $client = new Client;
-//        $client->fill([
-//            'name'         => $request->name,
-//            'email'        => $request->email,
-//            'telephone'    => $request->phone,
-//            'address'      => $request->address,
-//            'company_logo' => $logo->getClientOriginalName()
-//        ]);
-//        $client->name = $request->name;
-//        $client->email = $request->email;
-//        $client->telephone = $request->phone;
-//        $client->address = $request->address;
-//        $client->company_logo = $logo->getClientOriginalName();
-//        $client->save();
-        Client::create([
-            'name'         => $request->name,
-            'email'        => $request->email,
-            'telephone'    => $request->phone,
-            'address'      => $request->address,
-            'company_logo' => $logo->getClientOriginalName()
-        ]);
+        Client::create($request->only('name', 'email', 'phone', 'address') + ['company_logo' => $logoName]);
 
         return redirect('/dashboard')->with('success', "Client successfully created");
     }
