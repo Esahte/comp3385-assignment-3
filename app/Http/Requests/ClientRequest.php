@@ -10,13 +10,13 @@ class ClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|regex:/^\d{3}-\d{3}-\d{4}$/',
-            'address' => 'required',
-            'logo' => [
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'telephone' => 'required|regex:/^\d{3}-\d{3}-\d{4}$/',
+            'address'   => 'required',
+            'logo'      => [
                 'required',
-                File::types(['png', 'jpg', 'webp', 'svg'])->max(12 * 1024)
+                File::types(['png', 'jpg', 'webp', 'svg', 'jpeg'])->max(12 * 1024)
             ]
         ];
     }

@@ -13,7 +13,7 @@
                 <div class="card text-center h-100"
                      style="box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;">
                     <div class="h-70">
-                        <img src="{{ asset('storage/images/' . $client->company_logo) }}" class="card-img-top p-2"
+                        <img src="{{ asset('storage/' . $client->company_logo) }}" class="card-img-top p-2"
                              alt="{{ $client->name }} Logo" style="height: 18rem; object-fit: contain">
                     </div>
                     <div class="card-body" style="background-color: #f6f7f8; padding: 15px;">
